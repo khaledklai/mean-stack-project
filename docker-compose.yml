@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  angular:
+    hostname: localhost
+    build: front-angular
+    ports:
+      - 8080:80
+  express:
+    build: back-express
+    ports:
+      - "3000:3000"
+    links:
+      - database
+
+  database:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongo-volume:/data/db
+
