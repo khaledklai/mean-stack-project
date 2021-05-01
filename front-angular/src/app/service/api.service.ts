@@ -7,9 +7,24 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
   providedIn: 'root'
 })
 
+// declare var process : {
+//   env: {
+//     ANGULAR_HOST: string;
+//     ANGULAR_PORT: number;
+//   }
+// };
+
+
+
+
 export class ApiService {
   
-  baseUri:string = 'http://localhost:3000/api';
+  EXPRESS_HOST = process.env.EXPRESS_HOST;
+  EXPRESS_PORT = process.env.EXPRESS_PORT;
+
+  baseUri:string = `http://${this.EXPRESS_HOST}:${this.EXPRESS_PORT}/api`;
+
+  // baseUri:string = `http://localhost:3000/api`;
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) { }

@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2021-04-30T22:27:41Z"
+  labels:
+    app: mean-angular
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .: {}
+          f:app: {}
+      f:spec:
+        f:ports:
+          .: {}
+          k:{"port":80,"protocol":"TCP"}:
+            .: {}
+            f:port: {}
+            f:protocol: {}
+            f:targetPort: {}
+        f:selector:
+          .: {}
+          f:app: {}
+        f:sessionAffinity: {}
+        f:type: {}
+    manager: kubectl-expose
+    operation: Update
+    time: "2021-04-30T22:27:41Z"
+  name: mean-angular
+  namespace: default
+  resourceVersion: "245462"
+  selfLink: /api/v1/namespaces/default/services/mean-angular
+  uid: f5baadf2-036d-437b-a15a-df990724ef74
+spec:
+  clusterIP: 10.152.183.135
+  clusterIPs:
+  - 10.152.183.135
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: mean-angular
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
