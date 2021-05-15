@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mean-angular-svc
+  labels:
+    app: mean-angular-svc
+  namespace: default
+
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80 # service port
+    protocol: TCP
+    targetPort: 80 # container port
+
+  selector:
+    app: mean-angular-pod

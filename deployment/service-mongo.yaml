@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mean-mongo-svc
+  labels:
+    app: mean-mongo-svc
+  namespace: default
+
+spec:
+  type: ClusterIP
+  ports:
+  - port: 27017 # service port
+    protocol: TCP
+    targetPort: 27017 # container port
+
+  selector:
+    app: mean-mongo-pod
