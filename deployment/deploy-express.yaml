@@ -1,33 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
+  name: mean-express-deploy
   labels:
-    app: mean-express
-  name: mean-express
+    app: mean-express-deploy
+ 
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      app: mean-express
-  strategy: {}
+      app: mean-express-pod
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        app: mean-express
+        app: mean-express-pod
     spec:
       containers:
-      - image: khaledklai/mean-express:0.2
-        name: mean-express
+      - image: khaledklai/mean-express:0.4
+        name: mean-express-container
         ports:
         - containerPort: 3000
-        resources: {}
         env:
           - name: MONGO_DB_NAME
             value: "meandatabase"
           - name: MONGO_HOST
-            value: $(MEAN_MONGO_SERVICE_HOST)
+            value: mean-mongo-svc
           - name: MONGO_PORT
             value: "27017"
-status: {}

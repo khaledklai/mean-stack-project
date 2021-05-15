@@ -2,29 +2,19 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 
-// declare var process : {
-//   env: {
-//     ANGULAR_HOST: string;
-//     ANGULAR_PORT: number;
-//   }
-// };
-
-
-
-
 export class ApiService {
   
-  EXPRESS_HOST = process.env.EXPRESS_HOST;
-  EXPRESS_PORT = process.env.EXPRESS_PORT;
+  // baseUri:string = 'http://localhost:3000/api';
 
-  baseUri:string = `http://${this.EXPRESS_HOST}:${this.EXPRESS_PORT}/api`;
+  baseUri = environment.baseUri;
 
-  // baseUri:string = `http://localhost:3000/api`;
+
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) { }

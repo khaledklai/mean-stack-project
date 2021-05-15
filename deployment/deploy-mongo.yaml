@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mean-mongo-deploy
+  labels:
+    app: mean-mongo-deploy
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mean-mongo-pod
+  template:
+    metadata:
+      labels:
+        app: mean-mongo-pod
+    spec:
+      containers:
+      - image: mongo:4.4.6
+        name: mean-mongo-container

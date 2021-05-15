@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mean-express-svc
+  labels:
+    app: mean-express-svc
+  namespace: default
+
+spec:
+  type: NodePort
+  ports:
+  - targetPort: 3000 # container port
+    port: 3000 # service port
+    nodePort: 30003 # NodePort
+
+  selector:
+    app: mean-express-pod

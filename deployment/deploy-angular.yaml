@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mean-angular-deploy
+  labels:
+    app: mean-angular-deploy
+  
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mean-angular-pod
+  template:
+    metadata:
+      labels:
+        app: mean-angular-pod
+    spec:
+      containers:
+      - image: khaledklai/mean-angular:0.5
+        name: mean-angular-container
+        env:
+          - name: EXPRESS_HOST
+            value: mean-express-svc
+          - name: EXPRESS_PORT
+            value: "3000"
